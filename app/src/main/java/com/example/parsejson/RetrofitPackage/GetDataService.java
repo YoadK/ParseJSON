@@ -9,5 +9,5 @@ import rx.Observable;
 public interface GetDataService {
 
     @GET()
-    Observable<LocationModel> getAllMovies(@Url String url);
+    Observable<LocationModel> getAll(@Url String url);
 }

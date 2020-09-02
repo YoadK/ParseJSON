@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getMyData() {
         GetDataService apiService = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
-        Observable<LocationModel> observable = apiService.getAllMovies("/maps/api/place/nearbysearch/json?location=31.7428444,34.9847567&radius=50000&key=" +
+        Observable<LocationModel> observable = apiService.getAll("/maps/api/place/nearbysearch/json?location=31.7428444,34.9847567&radius=50000&key=" +
                 getString(R.string.api_key))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
