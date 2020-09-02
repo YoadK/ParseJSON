@@ -6,7 +6,7 @@ public class LocationModel {
 
     private List<Object> html_attributions = null;
     private String next_page_token;
-    private Result[] results = null;
+    private List<Result> results = null;
     private String status;
 
     public List<Object> getHtml_attributions() {
@@ -25,11 +25,11 @@ public class LocationModel {
         this.next_page_token = next_page_token;
     }
 
-    public Result[] getResults() {
+    public List<Result> getResults() {
         return results;
     }
 
-    public void setResults(Result[] results) {
+    public void setResults(List<Result> results) {
         this.results = results;
     }
 

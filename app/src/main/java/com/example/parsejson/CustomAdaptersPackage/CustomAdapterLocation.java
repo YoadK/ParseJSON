@@ -26,11 +26,12 @@ public class CustomAdapterLocation extends RecyclerView.Adapter<CustomAdapterLoc
 
     static class LocationViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name1, address1, kmMe1, isOpen1;
+        private TextView name1, address1;
         private LinearLayout linear1;
 
         private LocationViewHolder(View itemView) {
             super(itemView);
+
             name1 = itemView.findViewById(R.id.name1);
             address1 = itemView.findViewById(R.id.address1);
             linear1 = itemView.findViewById(R.id.linear1);

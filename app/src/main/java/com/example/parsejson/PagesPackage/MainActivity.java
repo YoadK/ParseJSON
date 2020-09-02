@@ -61,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(LocationModel products) {
-                generateDataList(Arrays.asList(products.getResults()));
+            public void onNext(LocationModel locationModel) {
+                generateDataList(locationModel.getResults());
             }
         });
     }
 
-    private void generateDataList(List<Result> photoList) {
-        locationList = new ArrayList<Result>(photoList);
+    private void generateDataList(List<Result> resultList) {
+        locationList = new ArrayList<Result>(resultList);
         customAdapterLocation = new CustomAdapterLocation(this, locationList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(customAdapterLocation);
