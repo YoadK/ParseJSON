@@ -19,11 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".BroadcastReceiverPackage.BroadcastReceiverBattery3">
+        <receiver android:name=".BroadcastReceiversPackage.BroadcastReceiverBattery3">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
             </intent-filter>
         </receiver>
+        <service
+            android:name=".ServicesPackage.MyService"
+            android:enabled="true" />
     </application>
 
 </manifest>
