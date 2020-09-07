@@ -4,9 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.parsejson.BroadcastReceiverPackage.BroadcastReceiverBattery3;
 import com.example.parsejson.CustomAdaptersPackage.CustomAdapterLocation;
 import com.example.parsejson.ModelsPackage.LocationModel;
 import com.example.parsejson.ModelsPackage.Result;
@@ -41,10 +47,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void initUI() {
         recyclerView = findViewById(R.id.recyclerView);
+
+        final IntentFilter filter = new IntentFilter(Intent.ACTION_POWER_CONNECTED);
+        final BroadcastReceiverBattery3 receiver = new BroadcastReceiverBattery3();
+
+        registerReceiver(receiver, filter);
     }
 
     private void getMyData() {
-
         //implementing the "GetDataService" interface
         GetDataService apiService = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
         Observable<LocationModel> observable = apiService.getAll("/maps/api/place/nearbysearch/json?location=31.7428444,34.9847567&radius=50000&key=" +
