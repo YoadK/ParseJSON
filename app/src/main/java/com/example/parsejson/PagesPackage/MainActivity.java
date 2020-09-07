@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RecyclerView recyclerView;
     private ArrayList<Result> locationList;
     private CustomAdapterLocation customAdapterLocation;
-    private Button btnStartService, btnStopService;
+    private Button btnStartService, btnStopService, btnMove;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView = findViewById(R.id.recyclerView);
         btnStartService = findViewById(R.id.btnStartService);
         btnStopService = findViewById(R.id.btnStopService);
+        btnMove = findViewById(R.id.btnMove);
 
         final IntentFilter filter = new IntentFilter(Intent.ACTION_POWER_CONNECTED);
         final BroadcastReceiverBattery3 receiver = new BroadcastReceiverBattery3();
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initListeners() {
         btnStartService.setOnClickListener(this);
         btnStopService.setOnClickListener(this);
+        btnMove.setOnClickListener(this);
     }
 
     private void getMyData() {
@@ -105,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnStopService:
                 stopService(new Intent(this, MyService.class));
                 break;
+            case R.id.btnMove:
+                startActivity(new Intent(this, MainActivity2.class));
         }
     }
 
