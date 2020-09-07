@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initUI();
         initListeners();
+        startBroadcastReceiver();
         getMyData();
     }
 
@@ -51,16 +52,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnStartService = findViewById(R.id.btnStartService);
         btnStopService = findViewById(R.id.btnStopService);
         btnMove = findViewById(R.id.btnMove);
-
-        final IntentFilter filter = new IntentFilter(Intent.ACTION_POWER_CONNECTED);
-        final BroadcastReceiverBattery3 receiver = new BroadcastReceiverBattery3();
-        registerReceiver(receiver, filter);
     }
 
     private void initListeners() {
         btnStartService.setOnClickListener(this);
         btnStopService.setOnClickListener(this);
         btnMove.setOnClickListener(this);
+    }
+
+    private void startBroadcastReceiver() {
+        final IntentFilter filter = new IntentFilter(Intent.ACTION_POWER_CONNECTED);
+        final BroadcastReceiverBattery3 receiver = new BroadcastReceiverBattery3();
+        registerReceiver(receiver, filter);
     }
 
     private void getMyData() {
