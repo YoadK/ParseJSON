@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         final IntentFilter filter = new IntentFilter(Intent.ACTION_POWER_CONNECTED);
         final BroadcastReceiverBattery3 receiver = new BroadcastReceiverBattery3();
-
         registerReceiver(receiver, filter);
     }
 
