@@ -44,11 +44,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getMyData() {
+
+        //implementing the "GetDataService" interface
         GetDataService apiService = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
         Observable<LocationModel> observable = apiService.getAll("/maps/api/place/nearbysearch/json?location=31.7428444,34.9847567&radius=50000&key=" +
                 getString(R.string.api_key))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
+        // "LocationModel" includes the list of "results" (all location data)
         observable.subscribe(new Observer<LocationModel>() {
             @Override
             public void onCompleted() {
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //?
     private void generateDataList(List<Result> resultList) {
         locationList = new ArrayList<Result>(resultList);
         customAdapterLocation = new CustomAdapterLocation(this, locationList);
