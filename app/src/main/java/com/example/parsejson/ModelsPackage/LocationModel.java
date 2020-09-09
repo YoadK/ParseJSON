@@ -1,8 +1,9 @@
 package com.example.parsejson.ModelsPackage;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class LocationModel {
+public class LocationModel implements Serializable {
 
     private List<Object> html_attributions = null;
     private String next_page_token;

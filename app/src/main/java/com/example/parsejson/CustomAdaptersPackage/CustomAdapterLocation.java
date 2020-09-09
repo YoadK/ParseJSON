@@ -1,6 +1,7 @@
 package com.example.parsejson.CustomAdaptersPackage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.parsejson.ModelsPackage.Result;
+import com.example.parsejson.PagesPackage.MapActivity;
 import com.example.parsejson.R;
 
 import org.jetbrains.annotations.NotNull;
@@ -64,14 +66,20 @@ public class CustomAdapterLocation extends RecyclerView.Adapter<CustomAdapterLoc
                         + current.getPhotos().get(0).getPhoto_reference() +
                         "&key=" + mInflater.getContext().getString(R.string.api_key))
                         .into(new SimpleTarget<Drawable>() {
-                    @Override
-                    public void onResourceReady(@NotNull Drawable resource, Transition<? super Drawable> transition) {
-                        holder.linear1.setBackground(resource);
-                    }
-                });
+                            @Override
+                            public void onResourceReady(@NotNull Drawable resource, Transition<? super Drawable> transition) {
+                                holder.linear1.setBackground(resource);
+                            }
+                        });
             } catch (Exception e) {
 
             }
+
+            holder.linear1.setOnClickListener(view -> {
+                Intent intent = new Intent(mInflater.getContext(), MapActivity.class);
+                intent.putExtra(mInflater.getContext().getString(R.string.map_data), current);
+                mInflater.getContext().startActivity(intent);
+            });
         }
     }
 

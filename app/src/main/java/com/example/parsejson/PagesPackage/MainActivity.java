@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 stopService(new Intent(this, MyService.class));
                 break;
             case R.id.btnMove:
-                startActivity(new Intent(this, MainActivity2.class));
+                startActivity(new Intent(this, FavoritesActivity.class));
         }
     }
 

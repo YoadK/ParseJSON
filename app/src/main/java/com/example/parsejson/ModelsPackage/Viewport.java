@@ -1,6 +1,8 @@
 package com.example.parsejson.ModelsPackage;
 
-public class Viewport {
+import java.io.Serializable;
+
+public class Viewport implements Serializable {
 
     private Northeast northeast;
     private Southwest southwest;

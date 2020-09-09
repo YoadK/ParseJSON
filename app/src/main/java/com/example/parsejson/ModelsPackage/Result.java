@@ -1,8 +1,9 @@
 package com.example.parsejson.ModelsPackage;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Result {
+public class Result implements Serializable {
 
     private Geometry geometry;
     private String icon;

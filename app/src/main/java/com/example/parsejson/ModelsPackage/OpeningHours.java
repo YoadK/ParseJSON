@@ -1,6 +1,8 @@
 package com.example.parsejson.ModelsPackage;
 
-public class OpeningHours {
+import java.io.Serializable;
+
+public class OpeningHours implements Serializable {
 
     private Boolean open_now;
 

@@ -1,6 +1,8 @@
 package com.example.parsejson.ModelsPackage;
 
-public class PlusCode {
+import java.io.Serializable;
+
+public class PlusCode implements Serializable {
 
     private String compound_code;
     private String global_code;

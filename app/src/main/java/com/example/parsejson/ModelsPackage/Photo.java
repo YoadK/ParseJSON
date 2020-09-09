@@ -1,8 +1,9 @@
 package com.example.parsejson.ModelsPackage;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Photo {
+public class Photo implements Serializable {
 
     private Integer height;
     private List<String> html_attributions = null;

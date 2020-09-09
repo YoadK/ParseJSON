@@ -1,6 +1,8 @@
 package com.example.parsejson.ModelsPackage;
 
-public class Northeast {
+import java.io.Serializable;
+
+public class Northeast implements Serializable {
 
     private Double lat;
     private Double lng;

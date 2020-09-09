@@ -1,6 +1,8 @@
 package com.example.parsejson.ModelsPackage;
 
-public class Geometry {
+import java.io.Serializable;
+
+public class Geometry implements Serializable {
 
     private Location location;
     private Viewport viewport;
