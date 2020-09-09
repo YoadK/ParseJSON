@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 // BroadcastReceiver are check if the phone are charged
-public class BroadcastReceiverBattery3 extends BroadcastReceiver {
+public class BroadcastReceiverBattery extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {

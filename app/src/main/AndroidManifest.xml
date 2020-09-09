@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".BroadcastReceiversPackage.BroadcastReceiverBattery3">
+        <receiver android:name=".BroadcastReceiversPackage.BroadcastReceiverBattery">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
             </intent-filter>

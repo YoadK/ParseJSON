@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.parsejson.BroadcastReceiversPackage.BroadcastReceiverBattery3;
+import com.example.parsejson.BroadcastReceiversPackage.BroadcastReceiverBattery;
 import com.example.parsejson.CustomAdaptersPackage.CustomAdapterLocation;
 import com.example.parsejson.ModelsPackage.LocationModel;
 import com.example.parsejson.ModelsPackage.Result;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void startBroadcastReceiver() {
         final IntentFilter filter = new IntentFilter(Intent.ACTION_POWER_CONNECTED);
-        final BroadcastReceiverBattery3 receiver = new BroadcastReceiverBattery3();
+        final BroadcastReceiverBattery receiver = new BroadcastReceiverBattery();
         registerReceiver(receiver, filter);
     }
 
