@@ -5,10 +5,11 @@ import java.util.List;
 
 public class Result implements Serializable {
 
+    private String id;
     private Geometry geometry;
     private String icon;
     private String name;
-    private List<Photo> photos = null;
+    private List<Photo> photos;
     private String place_id;
     private String reference;
     private String scope;
@@ -20,6 +21,21 @@ public class Result implements Serializable {
     private Double rating;
     private Integer user_ratings_total;
     private Boolean permanently_closed;
+
+    public Result(String name, String vicinity, Geometry geometry, List<Photo> photos) {
+        this.name = name;
+        this.vicinity = vicinity;
+        this.geometry = geometry;
+        this.photos = photos;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Geometry getGeometry() {
         return geometry;

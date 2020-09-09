@@ -16,8 +16,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.parsejson.ModelsPackage.Result;
+import com.example.parsejson.OtherPackage.ConApp;
+import com.example.parsejson.PagesPackage.FavoritesActivity;
 import com.example.parsejson.PagesPackage.MapActivity;
 import com.example.parsejson.R;
+import com.example.parsejson.ViewModelPackage.PlaceViewModelFavorites;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,10 +45,12 @@ public class CustomAdapterLocation extends RecyclerView.Adapter<CustomAdapterLoc
 
     private final LayoutInflater mInflater;
     private List<Result> mPlacesSearchList;
+    private PlaceViewModelFavorites placeViewModelFavorites;
 
     public CustomAdapterLocation(Context context, ArrayList<Result> dataList) {
         mInflater = LayoutInflater.from(context);
         this.mPlacesSearchList = dataList;
+        placeViewModelFavorites = new PlaceViewModelFavorites(ConApp.getApplication());
     }
 
     @NonNull
@@ -79,6 +84,16 @@ public class CustomAdapterLocation extends RecyclerView.Adapter<CustomAdapterLoc
                 Intent intent = new Intent(mInflater.getContext(), MapActivity.class);
                 intent.putExtra(mInflater.getContext().getString(R.string.map_data), current);
                 mInflater.getContext().startActivity(intent);
+            });
+
+            holder.linear1.setOnLongClickListener(view -> {
+                placeViewModelFavorites.insertPlace(current.getName(), current.getVicinity(),
+                        current.getGeometry().getLocation().getLat(), current.getGeometry().getLocation().getLng(),
+                        current.getPhotos().get(0).getPhoto_reference());
+
+                Intent intent = new Intent(mInflater.getContext(), FavoritesActivity.class);
+                mInflater.getContext().startActivity(intent);
+                return false;
             });
         }
     }
