@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initUI();
-        initListeners();
+        initListeners();// for services
         startBroadcastReceiver();
         getMyData();
     }
