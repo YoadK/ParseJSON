@@ -1,11 +1,14 @@
 package com.example.parsejson.PagesPackage;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +48,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initListeners();// for services
         startBroadcastReceiver();
         getMyData();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if (!checkPermissions()) {
+            requestPermissions();
+        }
     }
 
     private void initUI() {
@@ -98,6 +110,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         customAdapterLocation = new CustomAdapterLocation(this, locationList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(customAdapterLocation);
+    }
+
+    private boolean checkPermissions() {
+        int permissionState = ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        return permissionState == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermissions() {
+        boolean shouldProvideRationale = ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        if (shouldProvideRationale) {
+            startLocationPermissionRequest();
+        } else {
+            startLocationPermissionRequest();
+        }
+    }
+
+    private void startLocationPermissionRequest() {
+        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 99);
     }
 
     @Override
