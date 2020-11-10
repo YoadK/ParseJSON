@@ -53,9 +53,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap = googleMap;
         LatLng latLngResult = new LatLng(result.getGeometry().getLocation().getLat(), result.getGeometry().getLocation().getLng());
         mMap.addMarker(new MarkerOptions().position(latLngResult).title(result.getName()));
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        criteria = new Criteria();
-        provider = locationManager.getBestProvider(criteria, true);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
         }// TODO: Consider calling
